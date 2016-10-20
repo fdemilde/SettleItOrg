@@ -9,7 +9,6 @@ import { MainData } from '../../services/mainData.service';
 
 import { DisplayComponent } from './display.component';
 import { StatementComponent } from './statement/statement.component';
-import { EditStatementComponent } from './editStatement/editStatement.component';
 import { ChildrenComponent } from './children/children.component';
 
 import { DisplayRoutingModule } from './display-routing.module';
@@ -19,7 +18,6 @@ import { DisplayRoutingModule } from './display-routing.module';
     declarations: [
         DisplayComponent,
         StatementComponent,
-        EditStatementComponent,
         ChildrenComponent
     ],
     imports: [
