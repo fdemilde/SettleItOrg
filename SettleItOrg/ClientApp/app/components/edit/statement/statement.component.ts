@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SettleIt } from '../edit/SettleIt'
-import { MainData } from '../../services/mainData.service';
+import { SettleIt } from '../../../services/SettleIt'
+import { MainData } from '../../../services/mainData.service';
 
 @Component({
     selector: 'statement',

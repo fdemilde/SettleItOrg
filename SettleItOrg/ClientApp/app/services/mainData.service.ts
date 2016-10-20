@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { SettleIt } from '../components/edit/SettleIt'
+import { SettleIt } from './SettleIt'
 
 // export class mainData {
 //   constructor(public id: number, public name: string) { }

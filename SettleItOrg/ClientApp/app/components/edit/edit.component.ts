@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { SettleIt } from './SettleIt'
+import { SettleIt } from '../../services/SettleIt'
 import { MainData } from '../../services/mainData.service';
+import { StatementComponent } from './statement/statement.component';
+import { ChildrenComponent } from './children/children.component';
 
 @Component({
     selector: 'edit',
