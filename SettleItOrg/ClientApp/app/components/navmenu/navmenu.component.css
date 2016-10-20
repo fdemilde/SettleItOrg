@@ -10,20 +10,20 @@ li.link-active a:focus {
     color: white;
 }
 
-/* Keep the nav menu independent of scrolling and on top of other items */
-.main-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
+
+.navbar-inverse .navbar-toggle  {
+    color: #9d9d9d;
 }
 
-@media (min-width: 768px) {
-    /* On small screens, convert the nav menu to a vertical sidebar */
+.navbar-inverse .navbar-toggle:hover  {
+    color: white;
+}
+
+/* @media (min-width: 768px) {
+
     .main-nav {
         height: 100%;
-        width: calc(25% - 20px);
+        width: 25%;
     }
     .navbar {
         border-radius: 0px;
@@ -50,10 +50,10 @@ li.link-active a:focus {
         border-radius: 4px;
     }
     .navbar a {
-        /* If a menu item's text is too long, truncate it */
+
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
-}
+} */
