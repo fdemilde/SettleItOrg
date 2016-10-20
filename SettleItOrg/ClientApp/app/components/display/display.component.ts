@@ -12,32 +12,11 @@ import { ChildrenComponent } from './children/children.component';
 })
 export class DisplayComponent implements OnInit {
 
-    jsonTextArea: string
-
     constructor(
         private route: ActivatedRoute,
         public mainData: MainData
     ) { }
 
-    // ngOnInit() {
-
-    //     this.route.params.forEach((params: Params) => {
-    //         if (params['url']) {
-    //             var url = params['url'].replace(/\*/g, '.') //convert * to periods to get around .net routing period issue
-    //             this.mainData.getData(url)
-    //                 .subscribe(data => {
-    //                     this.mainData.data = data;
-    //                     this.mainData.si.calculate(this.mainData.data.mainStatement);
-    //                     this.jsonTextArea = JSON.stringify(this.mainData.data, null, 2)
-    //                 });
-    //         }
-    //     });
-
-    //     //var params = this.route.params.value.p;
-
-
-    //     //this.jsonTextArea = JSON.stringify(this.mainData.data, null, 2)
-    // }
 
         ngOnInit() {
 
@@ -62,19 +41,8 @@ export class DisplayComponent implements OnInit {
             .subscribe(data => {
                 this.mainData.data = data;
                 this.mainData.si.calculate(this.mainData.data.mainStatement);
-                this.jsonTextArea = JSON.stringify(this.mainData.data, null, 2);
             });
-    }
-
-    updateFromJsonTextArea(value) {
-        try {
-            var tempData = JSON.parse(value);
-            this.mainData.si.calculate(tempData.mainStatement);
-            this.mainData.data = tempData;
-        } catch (error) {
-            //ignore since manual errors will be frequent
         }
 
-    }
 }
 
