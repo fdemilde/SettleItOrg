@@ -8,12 +8,7 @@ export class SettleIt {
     public mainStatment: Statement;
     public shouldSort: boolean;
 
-    constructor() {
-        //constructor(mainStatement?: Statement, shouldSort: boolean = true) {
-        //    this.shouldSort = shouldSort;
-        //    if (mainStatement != undefined)
-        //        this.calculate(mainStatement, shouldSort);
-    }
+    constructor() {}
 
     public calculate(mainStatement?: Statement, shouldSort?: boolean) {
         if (mainStatement != undefined) this.mainStatment = mainStatement;
