@@ -3,6 +3,10 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { SettleIt } from './SettleIt'
 
+// export class mainData {
+//   constructor(public id: number, public name: string) { }
+// }
+
 @Injectable()
 export class MainData implements OnInit {
     public version: "0.3.0"
@@ -11,9 +15,6 @@ export class MainData implements OnInit {
     public selected: Statement
 
     constructor(private _http: Http) {
-    }
-
-    ngOnInit() {
         this.data = {
             mainStatement: <Statement>{},
             settings: <Settings>{},
@@ -22,6 +23,10 @@ export class MainData implements OnInit {
 
         this.si = new SettleIt();
         this.si.calculate(this.data.mainStatement);
+    }
+
+    ngOnInit() {
+
     }
 
     calculateAll() {

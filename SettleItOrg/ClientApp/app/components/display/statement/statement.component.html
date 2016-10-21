@@ -1,8 +1,6 @@
 <div class="statement" (click)="select()">
 	<span *ngIf="statement.generation==0">{{statement.weightedPercentage | percent:'1.0-0'}}</span>
 	<span *ngIf="statement.generation!=0">{{statement.weighted.differenceText}}</span>
-	<span (click)="addPro()">+</span>
-	<span (click)="addCon()">-</span>
 	{{statement.content}}
 	<div (click)="toggleOpen()" class="opener">
 		<span [hidden]="!statement.children.length">{{statement.open ? '&#9661;' : '&#9655;'}}</span>

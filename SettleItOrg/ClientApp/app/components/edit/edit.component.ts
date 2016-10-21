@@ -40,9 +40,9 @@ export class EditComponent implements OnInit {
         url = url.replace(/\*/g, '.'); //convert * to periods to get around .net routing period issue
         this.mainData.getData(url)
             .subscribe(data => {
+                if (data.version == undefined) data.version = this.mainData.version;
                 this.mainData.data = data;
                 this.mainData.si.calculate(this.mainData.data.mainStatement);
-                if (this.mainData.data.version == undefined) this.mainData.data.version = this.mainData.version;
                 this.jsonTextArea = JSON.stringify(this.mainData.data, null, 2);
             });
     }
