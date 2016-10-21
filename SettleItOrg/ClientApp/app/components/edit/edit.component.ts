@@ -19,26 +19,6 @@ export class EditComponent implements OnInit {
         public mainData: MainData
     ) { }
 
-    // ngOnInit() {
-
-    //     this.route.params.forEach((params: Params) => {
-    //         if (params['url']) {
-    //             var url = params['url'].replace(/\*/g, '.') //convert * to periods to get around .net routing period issue
-    //             this.mainData.getData(url)
-    //                 .subscribe(data => {
-    //                     this.mainData.data = data;
-    //                     this.mainData.si.calculate(this.mainData.data.mainStatement);
-    //                     this.jsonTextArea = JSON.stringify(this.mainData.data, null, 2)
-    //                 });
-    //         }
-    //     });
-
-    //     //var params = this.route.params.value.p;
-
-
-    //     //this.jsonTextArea = JSON.stringify(this.mainData.data, null, 2)
-    // }
-
         ngOnInit() {
 
         this.route.params.forEach((params: Params) => {
@@ -62,6 +42,7 @@ export class EditComponent implements OnInit {
             .subscribe(data => {
                 this.mainData.data = data;
                 this.mainData.si.calculate(this.mainData.data.mainStatement);
+                if (this.mainData.data.version == undefined) this.mainData.data.version = this.mainData.version;
                 this.jsonTextArea = JSON.stringify(this.mainData.data, null, 2);
             });
     }
