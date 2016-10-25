@@ -41,7 +41,8 @@ namespace SettleItOrg
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
                     HotModuleReplacement = true
                 });
             }
@@ -58,9 +59,24 @@ namespace SettleItOrg
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
+                routes.MapRoute(
+                    name: "display",
+                    template: "display/{*.}",
+                    defaults: new { controller = "Home", action = "Index" });
+
+                routes.MapRoute(
+                    name: "edit",
+                    template: "edit/{*.}",
+                    defaults: new { controller = "Home", action = "Index" });
+
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
+
+                //routes.MapRoute(
+                //        name: "spa-fallback",
+                //        template: "{*url}",
+                //        defaults: new { controller = "Home", action = "Index" });
             });
         }
     }

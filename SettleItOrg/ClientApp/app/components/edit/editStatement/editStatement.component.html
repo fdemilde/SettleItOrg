@@ -9,6 +9,14 @@
 			<label for="content">Content</label>
 			<textarea [(ngModel)]="statement.content" type="text" class="form-control" id="content" name="content"></textarea>
 		</div>
+        <div class="form-group">
+            <label for="citation">Citation</label>
+            <textarea [(ngModel)]="statement.citation" type="text" class="form-control" id="citation" name="citation"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="citationUrl">Citation Address</label>
+            <textarea [(ngModel)]="statement.citationUrl" type="text" class="form-control" id="citationUrl" name="citationUrl"></textarea>
+        </div>
 		<div class="form-group">
 			<label for="statement.isProMain">is Pro Main</label>
 			<input type="checkbox" name="statement.isProMain" [(ngModel)]="statement.isProMain">

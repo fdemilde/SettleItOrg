@@ -1,0 +1,12 @@
+<span class="citation" *ngIf="statement.citation && statement.citationUrl">
+    &nbsp;<a href="{{statement.citationUrl}}" target="_blank" rel="nofollow">{{statement.citation}}</a>
+</span>
+
+<span class="citation" *ngIf="!statement.citation && statement.citationUrl">
+    &nbsp;<a href="{{statement.citationUrl}}" target="_blank" rel="nofollow">{{statement.citationUrl}}</a>
+</span>
+
+<span class="citation" *ngIf="statement.citation && !statement.citationUrl">
+    &nbsp;{{statement.citation}}
+</span>
+
