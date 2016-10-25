@@ -73,10 +73,10 @@ namespace SettleItOrg
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
 
-                //routes.MapRoute(
-                //        name: "spa-fallback",
-                //        template: "{*url}",
-                //        defaults: new { controller = "Home", action = "Index" });
+                routes.MapRoute(
+                        name: "full-fallback",
+                        template: "{*url}",
+                        defaults: new { controller = "Home", action = "Index" });
             });
         }
     }
