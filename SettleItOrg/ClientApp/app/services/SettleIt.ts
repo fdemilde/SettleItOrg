@@ -133,6 +133,11 @@ export class SettleIt {
         if (found) {
             s.confidence.pro = avgConfPro + maxConfPro;
             s.confidence.con = avgConfCon + maxConfCon;
+            
+            //prevents stataments form reversing
+            if (s.confidence.con > s.confidence.pro)
+                s.confidence.pro = s.confidence.con
+
         } else { // Set the defaults if no confidence items were found
             if (s.isProMain) {
                 s.confidence.pro = 1;
