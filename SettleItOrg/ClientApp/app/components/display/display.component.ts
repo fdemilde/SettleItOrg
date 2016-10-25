@@ -23,7 +23,7 @@ export class DisplayComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             if (params['url']) {
                 var url = params['url'];
-                this.getData(url);
+                this.getData("http://" + url);
             }
         });
 
