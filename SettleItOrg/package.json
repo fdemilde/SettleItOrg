@@ -40,5 +40,11 @@
     "webpack-node-externals": "^1.4.3",
     "webpack-merge": "^0.14.1",
     "zone.js": "^0.6.21"
+  },
+  "devDependencies": {
+    "tslint": "3.15.1"
+  },
+  "scripts": {
+    "lint": "node_modules/tslint/bin/tslint \"ClientApp/app/**/*.ts\" || true"
   }
 }
