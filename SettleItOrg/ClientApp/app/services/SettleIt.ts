@@ -8,7 +8,7 @@ export class SettleIt {
     public mainStatment: Statement;
     public shouldSort: boolean;
 
-    constructor() {}
+    constructor() { }
 
     public calculate(mainStatement?: Statement, shouldSort?: boolean) {
         if (mainStatement != undefined) this.mainStatment = mainStatement;
@@ -26,7 +26,7 @@ export class SettleIt {
         if (s.importance == undefined) s.importance = {};
         if (s.weighted == undefined) s.weighted = {};
 
-        //todo make this a 62bit GUID
+        //todo make this a 62bit GUID [a-z,A-Z,0-9]
         if (s.id == undefined) s.id = ("0000" + (Math.random() * Math.pow(36, 4) << 0).toString(36)).slice(-4);
 
         this.calculateProMainParent(s, parent);
@@ -45,6 +45,39 @@ export class SettleIt {
             s.generation = parent.generation + 1;
     }
 
+    private calculateProMainParent(s: Statement, parent?: Statement) {
+        var parentIsProMain = true;
+        if (parent && parent.isProMain !== undefined)
+            parentIsProMain = parent.isProMain;
+
+
+
+        //If neither exist then default to proMain
+        if (s.isProMain === undefined && s.isProParent === undefined) {
+            s.isProMain = true;
+            s.isProParent = s.isProMain == parentIsProMain;
+        }
+
+        //if both exist then assume isProMain is correct
+        if (s.isProMain !== undefined && s.isProParent !== undefined) {
+            s.isProParent = s.isProMain == parentIsProMain;
+        }
+
+        //if only isProMain exists then set isProParent
+        if (s.isProMain !== undefined && s.isProParent === undefined) {
+            s.isProParent = s.isProMain == parentIsProMain;
+        }
+
+        //if only isProParent exists then set isProMain
+        if (s.isProMain === undefined && s.isProParent !== undefined) {
+            if (s.isProParent)
+                s.isProMain = parentIsProMain;
+            else
+                s.isProMain = !parentIsProMain;
+        }
+
+    }
+
 
     private step2AscendStatements(s: Statement, parent?: Statement) {
         for (let child of s.children) {
@@ -53,24 +86,9 @@ export class SettleIt {
         if (s.children === undefined) s.children = [];
         if (s.affects == undefined) s.affects = "AverageTheConfidence";
 
-        //this.calculateProMainParent(s, parent);
         this.calculateSiblingWeight(s);
         this.calculateConfidence(s);
         this.calculateImportance(s);
-    }
-
-    private calculateProMainParent(s: Statement, parent?: Statement) {
-        if (s.isProParent == undefined) {
-            //if IsProParent exists
-            if (s.isProMain == undefined) s.isProMain = true;
-            s.isProParent = !(parent && s.isProMain != parent.isProMain)
-        } else if (s.isProMain == undefined) {
-            //if IsProParent exists and isProMain does not
-            s.isProMain = !(parent && s.isProParent != parent.isProMain)
-        }
-        //If both IsProParent and isProMain exist then do nothing
-
-
     }
 
     /** Find the sibling with the most weight (so later you can make them all match)
@@ -129,11 +147,11 @@ export class SettleIt {
             }
         }
 
-        //Calculate the Pro can Con
+        //Calculate the Pro and Con
         if (found) {
             s.confidence.pro = avgConfPro + maxConfPro;
             s.confidence.con = avgConfCon + maxConfCon;
-            
+
             //prevents stataments form reversing
             if (s.isProParent && s.confidence.con > s.confidence.pro)
                 s.confidence.pro = s.confidence.con
