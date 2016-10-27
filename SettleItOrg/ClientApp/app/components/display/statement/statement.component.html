@@ -1,13 +1,22 @@
 <div class="statement" (click)="select()" [class.selected]="selected">
-	<span *ngIf="statement.generation==0">{{statement.weightedPercentage | percent:'1.0-0'}}</span>
-	<span *ngIf="statement.generation!=0">{{statement.weighted.differenceText}}</span>
-	{{statement.content}}
-    <citation [statement]="statement"></citation>
-    &nbsp;<a href="#" data-bind="attr: {href: statement().citationurl()}, text: statement().citationurl()" target="_blank" rel="nofollow"></a>
-	<div (click)="toggleOpen()" class="opener">
-		<span [hidden]="!statement.children.length">{{statement.open ? '&#9661;' : '&#9655;'}}</span>
-	</div>
+    <div (click)="toggleOpen()" class="opener">
+        <span [hidden]="!statement.children.length">{{statement.open ? '&#9661;' : '&#9655;'}}</span>
+    </div>
+
+    <span  class="statementPrefix">
+        <span *ngIf="statement.generation==0">{{statement.weightedPercentage | percent:'1.0-0'}}</span>
+        <span *ngIf="statement.generation!=0">{{statement.weighted.differenceText}}</span>
+    </span>
+
+    <span class="statementContent">{{statement.content}}</span>
+
+    <citation *ngIf="selected" [statement]="statement"></citation>
+
+    <span *ngIf="selected" class="selectedContent">
+        +{{statement.weighted.pro}}-{{statement.weighted.con}}
+    </span>
+
 </div>
 <div [hidden]="!(statement.open == true)">
-	<children *ngIf="statement.children.length" [children]="statement.children"></children>
+    <children *ngIf="statement.children.length" [children]="statement.children"></children>
 </div>

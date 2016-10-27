@@ -1,3 +1,5 @@
-.citation{
-    font-style:italic
+.citation {
+    font-style: italic;
+    display: block;
+    font-size: small;
 }

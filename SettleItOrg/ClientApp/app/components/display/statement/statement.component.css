@@ -1,4 +1,4 @@
-.statement{
+.statement {
     margin: 10px 0;
     position: relative;
     width: 100%;
@@ -7,6 +7,18 @@
     color: #4A4A4A;
     background: #ECECEC;
     padding: 5px 5px 5px 10px;
+    border: 2px solid #ECECEC;
+}
+
+.statementPrefix {
+    display: block;
+    float: left;
+    /*font-size: 2em;*/
+    padding-right: .5em;
+    font-weight: 800;
+}
+
+statementContent {
 }
 
 .opener {
@@ -17,5 +29,11 @@
 }
 
 .selected {
-    border: 2px solid black;
+    border: 2px solid #4A4A4A;
+}
+
+.selectedContent {
+    font-size: small;
+    font-style: italic;
+    display: block;
 }
