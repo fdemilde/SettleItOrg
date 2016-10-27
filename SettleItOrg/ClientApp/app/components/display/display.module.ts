@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { SettleIt } from '../../services/SettleIt'
 import { MainData } from '../../services/mainData.service';
+import { DisplayData } from './displayData.service';
 
 import { DisplayComponent } from './display.component';
 import { StatementComponent } from './statement/statement.component';
@@ -20,14 +21,18 @@ import { DisplayRoutingModule } from './display-routing.module';
         DisplayComponent,
         StatementComponent,
         ChildrenComponent,
-        CitationComponent
+        CitationComponent,
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         FormsModule,
         DisplayRoutingModule
     ],
-    providers: [SettleIt, MainData]
+    providers: [
+        SettleIt,
+        MainData,
+        DisplayData
+    ]
 })
 export class DisplayModule {
 }

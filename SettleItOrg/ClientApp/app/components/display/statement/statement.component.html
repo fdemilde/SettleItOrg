@@ -1,4 +1,4 @@
-<div class="statement" (click)="select()">
+<div class="statement" (click)="select()" [class.selected]="selected">
 	<span *ngIf="statement.generation==0">{{statement.weightedPercentage | percent:'1.0-0'}}</span>
 	<span *ngIf="statement.generation!=0">{{statement.weighted.differenceText}}</span>
 	{{statement.content}}
