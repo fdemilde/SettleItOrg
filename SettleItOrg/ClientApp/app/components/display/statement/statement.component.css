@@ -11,10 +11,10 @@
 }
 
 .statementPrefix {
-    display: block;
+    /*display: block;
     float: left;
-    /*font-size: 2em;*/
-    padding-right: .5em;
+    font-size: 2em;
+    padding-right: .5em;*/
     font-weight: 800;
 }
 
