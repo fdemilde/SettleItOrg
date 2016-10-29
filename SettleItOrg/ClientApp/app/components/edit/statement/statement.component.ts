@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SettleIt } from '../../../services/SettleIt'
 import { MainData } from '../../../services/mainData.service';
+import { DisplayData } from '../displayData.service';
+
 
 @Component({
     selector: 'statement',
@@ -13,12 +15,13 @@ export class StatementComponent implements OnInit {
     selected: boolean;
 
     constructor(
-        private _mainData: MainData
+        private _mainData: MainData,
+        public displayData: DisplayData
     ) { }
 
     ngOnInit() {
-        if (this.statement.generation == 0)
-            this.selected = true;
+        //if (this.statement.generation == 0)
+            //this.select();
     }
 
     toggleOpen() {
@@ -29,7 +32,11 @@ export class StatementComponent implements OnInit {
     }
 
     select() {
-        this._mainData.selected = this.statement;
+        this.displayData.here = false;
+        if (this.displayData.statementComponent)
+            this.displayData.statementComponent.selected = false;
+        this.displayData.statementComponent = this;
+        this.selected = true;
     }
 
     addPro() {
@@ -40,12 +47,12 @@ export class StatementComponent implements OnInit {
         this.statement.open = true;
     }
 
-    addCon(){
-               var newStatement = <Statement>{ isProMain: false};
+    addCon() {
+        var newStatement = <Statement>{ isProMain: false };
         this._mainData.si.step1ValidateStatements(newStatement);
         this.statement.children.push(newStatement);
         this._mainData.calculateAll();
-        this.statement.open = true; 
+        this.statement.open = true;
     }
 
 }

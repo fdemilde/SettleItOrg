@@ -32,6 +32,7 @@ import { EditRoutingModule } from './edit-routing.module';
     ],
     providers: [
         SettleIt, MainData, DisplayData
+    ]
 })
 export class EditModule {
 }
