@@ -1,4 +1,8 @@
-<editstatement *ngIf="mainData.selected"  [statement]="mainData.selected"></editstatement>
+<editstatement *ngIf="displayData.statementComponent"  [statement]="displayData.statementComponent"></editstatement>
+:{{displayData|json}}:
+<hr />
+:{{displayData.statementComponent|json}}:
+
 <hr/>
 <statement [statement]="mainData.data.mainStatement"></statement>
 <textarea [value]="mainData.data|json" (keyup)="updateFromJsonTextArea($event.target.value)" style="width:100%; height:400px;"></textarea>

@@ -11,6 +11,8 @@ import { EditComponent } from './edit.component';
 import { StatementComponent } from './statement/statement.component';
 import { EditStatementComponent } from './editStatement/editStatement.component';
 import { ChildrenComponent } from './children/children.component';
+import { CitationComponent } from './citation/citation.component';
+import { DisplayData } from './displayData.service';
 
 import { EditRoutingModule } from './edit-routing.module';
 
@@ -20,14 +22,16 @@ import { EditRoutingModule } from './edit-routing.module';
         EditComponent,
         StatementComponent,
         EditStatementComponent,
-        ChildrenComponent
+        ChildrenComponent,
+        CitationComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         FormsModule,
         EditRoutingModule
     ],
-    providers: [SettleIt, MainData]
+    providers: [
+        SettleIt, MainData, DisplayData
 })
 export class EditModule {
 }

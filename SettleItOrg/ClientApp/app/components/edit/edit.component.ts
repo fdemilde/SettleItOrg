@@ -4,6 +4,7 @@ import { SettleIt } from '../../services/SettleIt'
 import { MainData } from '../../services/mainData.service';
 import { StatementComponent } from './statement/statement.component';
 import { ChildrenComponent } from './children/children.component';
+import { DisplayData } from './displayData.service';
 
 @Component({
     selector: 'edit',
@@ -16,7 +17,8 @@ export class EditComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        public mainData: MainData
+        public mainData: MainData,
+        public displayData: DisplayData
     ) { }
 
         ngOnInit() {
@@ -34,6 +36,7 @@ export class EditComponent implements OnInit {
         if (this.route.snapshot.url[0].path == "Is-the-Black-Lives-Matter-movement-a-net-detriment-to-society-original")
             this.getData("https://gist.githubusercontent.com/BentleyDavis/08905162e55d93c84b5ec2ee364a49e1/raw");
 
+        this.displayData.here = true;
     }
 
     getData(url) {
